@@ -1,8 +1,4 @@
 
-## Bugs
-
-If you find a bug, open an issue. We're actively maintaining this. We understand that Shopify's documentation doesn't always line up exactly with its behavior. That's why this spec is so important. We're documenting how the API really works.
-
 ## Contributing
 
 [fork]: https://github.com/USER/REPO/fork
@@ -29,6 +25,10 @@ We will gladly accept pull requests for contributions to other files in this rep
 0. Make your change
 0. Push to your fork and [submit a pull request][pr]
 0. Pat your self on the back and wait for your pull request to be reviewed and merged.
+
+## Bugs
+
+If you find a bug, open an issue. We're actively maintaining this. We understand that Shopify's documentation doesn't always line up exactly with its behavior. That's why this spec is so important. We're documenting how the API really works.
 
 ## Resources
 
