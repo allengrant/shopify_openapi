@@ -1,4 +1,8 @@
 
+## Bugs
+
+If you find a bug, open an issue. We're actively maintaining this. We understand that Shopify's documentation doesn't always line up exactly with its behavior. That's why this spec is so important. We're documenting how the API really works.
+
 ## Contributing
 
 [fork]: https://github.com/USER/REPO/fork
