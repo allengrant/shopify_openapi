@@ -15,7 +15,8 @@ api = await api.init()
 
 ```bash
 # Generate the Python Client
-openapi-python-client generate --url https://github.com/allengrant/shopify_openapi/raw/master/shopify_openapi.yaml
+openapi-python-client generate \
+  --url https://github.com/allengrant/shopify_openapi/raw/master/shopify_openapi.yaml
 cd shopify-admin-api-client
 ```
 
