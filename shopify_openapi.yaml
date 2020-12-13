@@ -1,0 +1,2928 @@
+openapi: "3.0.0"
+info:
+  title: "Shopify Admin API"
+  description: "The REST Admin API lets you build apps and other integrations for the Shopify admin."
+  version: "2020-10"
+paths:
+  /admin/api/2020-01/products.json:
+    get:
+      summary: "Retrieves a list of products. Note: As of version 2019-07, this endpoint implements pagination by using links that are provided in the response header. Sending the page parameter will return an error. To learn more, see Making requests to paginated REST Admin API endpoints."
+      description: "https://shopify.dev/docs/admin-api/rest/reference/products/product#index-2020-01"
+      parameters:
+        - in: "query"
+          name: "ids"
+          description: "Return only products specified by a comma-separated list of product IDs."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "limit"
+          description: "Return up to this many results per page.\n                  (default: 50, maximum: 250)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "since_id"
+          description: "Restrict results to after the specified ID."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "title"
+          description: "Filter results by product title."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "vendor"
+          description: "Filter results by product vendor."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "handle"
+          description: "Filter results by product handle."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "product_type"
+          description: "Filter results by product type."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "status"
+          description: "Return products by their status.\n                  (default: active)\n                    \n                        active: Show only active products.\n                        archived: Show only archived products.\n                        draft: Show only draft products."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "collection_id"
+          description: "Filter results by product collection ID."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "created_at_min"
+          description: "Show products created after date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "created_at_max"
+          description: "Show products created before date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "updated_at_min"
+          description: "Show products last updated after date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "updated_at_max"
+          description: "Show products last updated before date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "published_at_min"
+          description: "Show products published after date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "published_at_max"
+          description: "Show products published before date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "published_status"
+          description: "Return products by their published status\n                  (default: any)\n                    \n                        published: Show only published products.\n                        unpublished: Show only unpublished products.\n                        any: Show all products."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "fields"
+          description: "Show only certain fields, specified by a comma-separated list of field names."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "presentment_currencies"
+          description: "Return presentment prices in only certain currencies, specified by a comma-separated list of ISO 4217 currency codes."
+          schema: {}
+          required: false
+      tags:
+        - "products"
+        - "product"
+        - "products/product"
+      responses:
+        200:
+          description: ""
+    post:
+      requestBody:
+        content:
+          application/json:
+            examples:
+              example1:
+                summary: "Create a new product with the default product variant"
+              example2:
+                value:
+                  product:
+                    title: "Burton Custom Freestyle 151"
+                    body_html: "<strong>Good snowboard!</strong>"
+                    vendor: "Burton"
+                    product_type: "Snowboard"
+                    published: false
+                summary: "Create a new unpublished product"
+              example3:
+                value:
+                  product:
+                    title: "Burton Custom Freestyle 151"
+                    body_html: "<strong>Good snowboard!</strong>"
+                    vendor: "Burton"
+                    product_type: "Snowboard"
+                    shop:
+                      id: 690933842
+                      name: "Apple Computers"
+                      email: "steve@apple.com"
+                      domain: "apple.myshopify.com"
+                      province: "California"
+                      country: "US"
+                      address1: "1 Infinite Loop"
+                      zip: "95014"
+                      city: "Cupertino"
+                      source: null
+                      phone: "1231231234"
+                      latitude: 45.45
+                      longitude: -75.43
+                      primary_locale: "en"
+                      address2: "Suite 100"
+                      created_at: "2007-12-31T19:00:00-05:00"
+                      updated_at: "2020-11-04T16:46:58-05:00"
+                      country_code: "US"
+                      country_name: "United States"
+                      currency: "USD"
+                      customer_email: "steve@apple.com"
+                      timezone: "(GMT-05:00) Eastern Time (US & Canada)"
+                      iana_timezone: "America/New_York"
+                      shop_owner: "Steve Jobs"
+                      money_format: "$"
+                      money_with_currency_format: "$ USD"
+                      weight_unit: "lb"
+                      province_code: "CA"
+                      taxes_included: null
+                      tax_shipping: null
+                      county_taxes: true
+                      plan_display_name: "Shopify Plus"
+                      plan_name: "enterprise"
+                      has_discounts: true
+                      has_gift_cards: true
+                      myshopify_domain: "apple.myshopify.com"
+                      google_apps_domain: null
+                      google_apps_login_enabled: null
+                      money_in_emails_format: "$"
+                      money_with_currency_in_emails_format: "$ USD"
+                      eligible_for_payments: true
+                      requires_extra_payments_agreement: false
+                      password_enabled: null
+                      has_storefront: true
+                      eligible_for_card_reader_giveaway: false
+                      finances: true
+                      primary_location_id: 905684977
+                      cookie_consent_level: "implicit"
+                      visitor_tracking_consent_preference: "allow_all"
+                      force_ssl: true
+                      checkout_api_supported: true
+                      multi_location_enabled: false
+                      setup_required: false
+                      pre_launch_enabled: false
+                      enabled_presentment_currencies:
+                        - "USD"
+                    status: "draft"
+                summary: "Create a new draft product"
+              example4:
+                value:
+                  product:
+                    title: "Burton Custom Freestyle 151"
+                    body_html: "<strong>Good snowboard!</strong>"
+                    vendor: "Burton"
+                    product_type: "Snowboard"
+                    variants:
+                      - option1: "First"
+                        price: "10.00"
+                        sku: "123"
+                      - option1: "Second"
+                        price: "20.00"
+                        sku: "123"
+                summary: "Create a new product with multiple product variants"
+              example5:
+                value:
+                  product:
+                    title: "Burton Custom Freestyle 151"
+                    body_html: "<strong>Good snowboard!</strong>"
+                    vendor: "Burton"
+                    product_type: "Snowboard"
+                    variants:
+                      - option1: "Blue"
+                        option2: "155"
+                      - option1: "Black"
+                        option2: "159"
+                    options:
+                      - name: "Color"
+                        values:
+                          - "Blue"
+                          - "Black"
+                      - name: "Size"
+                        values:
+                          - "155"
+                          - "159"
+                summary: "Create a new product with multiple product variants and multiple options"
+              example6:
+                value:
+                  product:
+                    title: "Burton Custom Freestyle 151"
+                    body_html: "<strong>Good snowboard!</strong>"
+                    vendor: "Burton"
+                    product_type: "Snowboard"
+                    images:
+                      - attachment: "R0lGODlhAQABAIAAAAAAAAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\n"
+                summary: "Create a new product with the default variant and base64 encoded image"
+              example7:
+                value:
+                  product:
+                    title: "Burton Custom Freestyle 151"
+                    body_html: "<strong>Good snowboard!</strong>"
+                    vendor: "Burton"
+                    product_type: "Snowboard"
+                    images:
+                      - src: "http://example.com/rails_logo.gif"
+                summary: "Create a new product with the default variant and a product image that will be downloaded by Shopify"
+              example8:
+                value:
+                  product:
+                    body_html: "A mystery!"
+                summary: "Creating a product without a title will return an error"
+              example9:
+                value:
+                  product:
+                    title: "Burton Custom Freestyle 151"
+                    body_html: "<strong>Good snowboard!</strong>"
+                    vendor: "Burton"
+                    product_type: "Snowboard"
+                    metafields:
+                      - key: "new"
+                        value: "newvalue"
+                        value_type: "string"
+                        namespace: "global"
+                summary: "Create a product with a metafield"
+      summary: "Creates a new product.\n          If you want to set the product's SEO information, then you can use the following properties:\n          \n            metafields_global_title_tag: The name of the product used for SEO purposes. Generally added to the <meta name='title'> tag.\n            metafields_global_description_tag: A description of the product used for SEO purposes. Generally added to the <meta name='description'> tag."
+      description: "https://shopify.dev/docs/admin-api/rest/reference/products/product#create-2020-01"
+      parameters: []
+      tags:
+        - "products"
+        - "product"
+        - "products/product"
+      responses:
+        200:
+          description: ""
+  /admin/api/2020-01/products/count.json:
+    get:
+      summary: "Retrieves a count of products."
+      description: "https://shopify.dev/docs/admin-api/rest/reference/products/product#count-2020-01"
+      parameters:
+        - in: "query"
+          name: "vendor"
+          description: "Filter results by product vendor."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "product_type"
+          description: "Filter results by product type."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "collection_id"
+          description: "Filter results by collection ID."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "created_at_min"
+          description: "Show products created after date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "created_at_max"
+          description: "Show products created before date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "updated_at_min"
+          description: "Show products last updated after date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "updated_at_max"
+          description: "Show products last updated before date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "published_at_min"
+          description: "Show products published after date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "published_at_max"
+          description: "Show products published before date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "published_status"
+          description: "Return products by their published status\n                  (default: any)\n                    \n                        published: Show only published products.\n                        unpublished: Show only unpublished products.\n                        any: Show all products."
+          schema: {}
+          required: false
+      tags:
+        - "products"
+        - "product"
+        - "products/product"
+      responses:
+        200:
+          description: ""
+  /admin/api/2020-01/products/{product_id}.json:
+    get:
+      summary: "Retrieves a single product."
+      description: "https://shopify.dev/docs/admin-api/rest/reference/products/product#show-2020-01"
+      parameters:
+        - in: "path"
+          name: "product_id"
+          required: true
+          schema:
+            type: "string"
+          description: "product_id"
+        - in: "query"
+          name: "fields"
+          description: "A comma-separated list of fields to include in the response."
+          schema: {}
+          required: false
+      tags:
+        - "products"
+        - "product"
+        - "products/product"
+      responses:
+        200:
+          description: ""
+    put:
+      requestBody:
+        content:
+          application/json:
+            examples:
+              example1:
+                value:
+                  product:
+                    id: 632910392
+                    title: "New product title"
+                summary: "Update a product's title"
+              example2:
+                value:
+                  product:
+                    id: 632910392
+                    status: "draft"
+                summary: "Update a product's status"
+              example3:
+                value:
+                  product:
+                    id: 632910392
+                    tags: "Barnes & Noble, John's Fav"
+                summary: "Update a product's tags"
+              example4:
+                value:
+                  product:
+                    id: 632910392
+                    images: []
+                summary: "Update a product by clearing product images"
+              example5:
+                value:
+                  product:
+                    id: 632910392
+                    images:
+                      - id: 850703190
+                      - id: 562641783
+                      - src: "http://example.com/rails_logo.gif"
+                summary: "Update a product by adding a new product image"
+              example6:
+                value:
+                  product:
+                    id: 632910392
+                    images:
+                      - id: 850703190
+                        position: 2
+                      - id: 562641783
+                        position: 1
+                summary: "Update a product by reordering product image"
+              example7:
+                value:
+                  product:
+                    id: 632910392
+                    variants:
+                      - id: 457924702
+                      - id: 39072856
+                      - id: 49148385
+                      - id: 808950810
+                summary: "Update a product by reordering the product variants"
+              example8:
+                value:
+                  product:
+                    id: 632910392
+                    title: "Updated Product Title"
+                    variants:
+                      - id: 808950810
+                        price: "2000.00"
+                        sku: "Updating the Product SKU"
+                      - id: 49148385
+                      - id: 39072856
+                      - id: 457924702
+                summary: "Update a product and one of its variants"
+              example9:
+                value:
+                  product:
+                    id: 632910392
+                    metafields_global_title_tag: "Brand new title"
+                    metafields_global_description_tag: "Brand new description"
+                summary: "Update a product's SEO title and description"
+              example10:
+                value:
+                  product:
+                    id: 632910392
+                    published: true
+                summary: "Show a hidden product by changing the published attribute to true"
+              example11:
+                value:
+                  product:
+                    id: 632910392
+                    published: false
+                summary: "Hide a published product by changing the published attribute to false"
+              example12:
+                value:
+                  product:
+                    id: 632910392
+                    metafields:
+                      - key: "new"
+                        value: "newvalue"
+                        value_type: "string"
+                        namespace: "global"
+                summary: "Add a metafield to an existing product"
+      summary: "Updates a product and its variants and images.\n          If you want to update the product's SEO information, then you can use the following properties:\n          \n            metafields_global_title_tag: The name of the product used for SEO purposes. Generally added to the <meta name='title'> tag.\n            metafields_global_description_tag: A description of the product used for SEO purposes. Generally added to the <meta name='description'> tag."
+      description: "https://shopify.dev/docs/admin-api/rest/reference/products/product#update-2020-01"
+      parameters:
+        - in: "path"
+          name: "product_id"
+          required: true
+          schema:
+            type: "string"
+          description: "product_id"
+      tags:
+        - "products"
+        - "product"
+        - "products/product"
+      responses:
+        200:
+          description: ""
+    delete:
+      summary: "Deletes a product."
+      description: "https://shopify.dev/docs/admin-api/rest/reference/products/product#destroy-2020-01"
+      parameters:
+        - in: "path"
+          name: "product_id"
+          required: true
+          schema:
+            type: "string"
+          description: "product_id"
+      tags:
+        - "products"
+        - "product"
+        - "products/product"
+      responses:
+        200:
+          description: ""
+  /admin/api/2020-04/products.json:
+    get:
+      summary: "Retrieves a list of products. Note: As of version 2019-07, this endpoint implements pagination by using links that are provided in the response header. Sending the page parameter will return an error. To learn more, see Making requests to paginated REST Admin API endpoints."
+      description: "https://shopify.dev/docs/admin-api/rest/reference/products/product#index-2020-04"
+      parameters:
+        - in: "query"
+          name: "ids"
+          description: "Return only products specified by a comma-separated list of product IDs."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "limit"
+          description: "Return up to this many results per page.\n                  (default: 50, maximum: 250)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "since_id"
+          description: "Restrict results to after the specified ID."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "title"
+          description: "Filter results by product title."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "vendor"
+          description: "Filter results by product vendor."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "handle"
+          description: "Filter results by product handle."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "product_type"
+          description: "Filter results by product type."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "status"
+          description: "Return products by their status.\n                  (default: active)\n                    \n                        active: Show only active products.\n                        archived: Show only archived products.\n                        draft: Show only draft products."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "collection_id"
+          description: "Filter results by product collection ID."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "created_at_min"
+          description: "Show products created after date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "created_at_max"
+          description: "Show products created before date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "updated_at_min"
+          description: "Show products last updated after date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "updated_at_max"
+          description: "Show products last updated before date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "published_at_min"
+          description: "Show products published after date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "published_at_max"
+          description: "Show products published before date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "published_status"
+          description: "Return products by their published status\n                  (default: any)\n                    \n                        published: Show only published products.\n                        unpublished: Show only unpublished products.\n                        any: Show all products."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "fields"
+          description: "Show only certain fields, specified by a comma-separated list of field names."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "presentment_currencies"
+          description: "Return presentment prices in only certain currencies, specified by a comma-separated list of ISO 4217 currency codes."
+          schema: {}
+          required: false
+      tags:
+        - "products"
+        - "product"
+        - "products/product"
+      responses:
+        200:
+          description: ""
+    post:
+      requestBody:
+        content:
+          application/json:
+            examples:
+              example1:
+                summary: "Create a new product with the default product variant"
+              example2:
+                value:
+                  product:
+                    title: "Burton Custom Freestyle 151"
+                    body_html: "<strong>Good snowboard!</strong>"
+                    vendor: "Burton"
+                    product_type: "Snowboard"
+                    published: false
+                summary: "Create a new unpublished product"
+              example3:
+                value:
+                  product:
+                    title: "Burton Custom Freestyle 151"
+                    body_html: "<strong>Good snowboard!</strong>"
+                    vendor: "Burton"
+                    product_type: "Snowboard"
+                    shop:
+                      id: 690933842
+                      name: "Apple Computers"
+                      email: "steve@apple.com"
+                      domain: "apple.myshopify.com"
+                      province: "California"
+                      country: "US"
+                      address1: "1 Infinite Loop"
+                      zip: "95014"
+                      city: "Cupertino"
+                      source: null
+                      phone: "1231231234"
+                      latitude: 45.45
+                      longitude: -75.43
+                      primary_locale: "en"
+                      address2: "Suite 100"
+                      created_at: "2007-12-31T19:00:00-05:00"
+                      updated_at: "2020-11-04T16:46:58-05:00"
+                      country_code: "US"
+                      country_name: "United States"
+                      currency: "USD"
+                      customer_email: "steve@apple.com"
+                      timezone: "(GMT-05:00) Eastern Time (US & Canada)"
+                      iana_timezone: "America/New_York"
+                      shop_owner: "Steve Jobs"
+                      money_format: "$"
+                      money_with_currency_format: "$ USD"
+                      weight_unit: "lb"
+                      province_code: "CA"
+                      taxes_included: null
+                      tax_shipping: null
+                      county_taxes: true
+                      plan_display_name: "Shopify Plus"
+                      plan_name: "enterprise"
+                      has_discounts: true
+                      has_gift_cards: true
+                      myshopify_domain: "apple.myshopify.com"
+                      google_apps_domain: null
+                      google_apps_login_enabled: null
+                      money_in_emails_format: "$"
+                      money_with_currency_in_emails_format: "$ USD"
+                      eligible_for_payments: true
+                      requires_extra_payments_agreement: false
+                      password_enabled: null
+                      has_storefront: true
+                      eligible_for_card_reader_giveaway: false
+                      finances: true
+                      primary_location_id: 905684977
+                      cookie_consent_level: "implicit"
+                      visitor_tracking_consent_preference: "allow_all"
+                      force_ssl: true
+                      checkout_api_supported: true
+                      multi_location_enabled: false
+                      setup_required: false
+                      pre_launch_enabled: false
+                      enabled_presentment_currencies:
+                        - "USD"
+                    status: "draft"
+                summary: "Create a new draft product"
+              example4:
+                value:
+                  product:
+                    title: "Burton Custom Freestyle 151"
+                    body_html: "<strong>Good snowboard!</strong>"
+                    vendor: "Burton"
+                    product_type: "Snowboard"
+                    variants:
+                      - option1: "First"
+                        price: "10.00"
+                        sku: "123"
+                      - option1: "Second"
+                        price: "20.00"
+                        sku: "123"
+                summary: "Create a new product with multiple product variants"
+              example5:
+                value:
+                  product:
+                    title: "Burton Custom Freestyle 151"
+                    body_html: "<strong>Good snowboard!</strong>"
+                    vendor: "Burton"
+                    product_type: "Snowboard"
+                    variants:
+                      - option1: "Blue"
+                        option2: "155"
+                      - option1: "Black"
+                        option2: "159"
+                    options:
+                      - name: "Color"
+                        values:
+                          - "Blue"
+                          - "Black"
+                      - name: "Size"
+                        values:
+                          - "155"
+                          - "159"
+                summary: "Create a new product with multiple product variants and multiple options"
+              example6:
+                value:
+                  product:
+                    title: "Burton Custom Freestyle 151"
+                    body_html: "<strong>Good snowboard!</strong>"
+                    vendor: "Burton"
+                    product_type: "Snowboard"
+                    images:
+                      - attachment: "R0lGODlhAQABAIAAAAAAAAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\n"
+                summary: "Create a new product with the default variant and base64 encoded image"
+              example7:
+                value:
+                  product:
+                    title: "Burton Custom Freestyle 151"
+                    body_html: "<strong>Good snowboard!</strong>"
+                    vendor: "Burton"
+                    product_type: "Snowboard"
+                    images:
+                      - src: "http://example.com/rails_logo.gif"
+                summary: "Create a new product with the default variant and a product image that will be downloaded by Shopify"
+              example8:
+                value:
+                  product:
+                    body_html: "A mystery!"
+                summary: "Creating a product without a title will return an error"
+              example9:
+                value:
+                  product:
+                    title: "Burton Custom Freestyle 151"
+                    body_html: "<strong>Good snowboard!</strong>"
+                    vendor: "Burton"
+                    product_type: "Snowboard"
+                    metafields:
+                      - key: "new"
+                        value: "newvalue"
+                        value_type: "string"
+                        namespace: "global"
+                summary: "Create a product with a metafield"
+      summary: "Creates a new product.\n          If you want to set the product's SEO information, then you can use the following properties:\n          \n            metafields_global_title_tag: The name of the product used for SEO purposes. Generally added to the <meta name='title'> tag.\n            metafields_global_description_tag: A description of the product used for SEO purposes. Generally added to the <meta name='description'> tag."
+      description: "https://shopify.dev/docs/admin-api/rest/reference/products/product#create-2020-04"
+      parameters: []
+      tags:
+        - "products"
+        - "product"
+        - "products/product"
+      responses:
+        200:
+          description: ""
+  /admin/api/2020-04/products/count.json:
+    get:
+      summary: "Retrieves a count of products."
+      description: "https://shopify.dev/docs/admin-api/rest/reference/products/product#count-2020-04"
+      parameters:
+        - in: "query"
+          name: "vendor"
+          description: "Filter results by product vendor."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "product_type"
+          description: "Filter results by product type."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "collection_id"
+          description: "Filter results by collection ID."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "created_at_min"
+          description: "Show products created after date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "created_at_max"
+          description: "Show products created before date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "updated_at_min"
+          description: "Show products last updated after date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "updated_at_max"
+          description: "Show products last updated before date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "published_at_min"
+          description: "Show products published after date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "published_at_max"
+          description: "Show products published before date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "published_status"
+          description: "Return products by their published status\n                  (default: any)\n                    \n                        published: Show only published products.\n                        unpublished: Show only unpublished products.\n                        any: Show all products."
+          schema: {}
+          required: false
+      tags:
+        - "products"
+        - "product"
+        - "products/product"
+      responses:
+        200:
+          description: ""
+  /admin/api/2020-04/products/{product_id}.json:
+    get:
+      summary: "Retrieves a single product."
+      description: "https://shopify.dev/docs/admin-api/rest/reference/products/product#show-2020-04"
+      parameters:
+        - in: "path"
+          name: "product_id"
+          required: true
+          schema:
+            type: "string"
+          description: "product_id"
+        - in: "query"
+          name: "fields"
+          description: "A comma-separated list of fields to include in the response."
+          schema: {}
+          required: false
+      tags:
+        - "products"
+        - "product"
+        - "products/product"
+      responses:
+        200:
+          description: ""
+    put:
+      requestBody:
+        content:
+          application/json:
+            examples:
+              example1:
+                value:
+                  product:
+                    id: 632910392
+                    title: "New product title"
+                summary: "Update a product's title"
+              example2:
+                value:
+                  product:
+                    id: 632910392
+                    status: "draft"
+                summary: "Update a product's status"
+              example3:
+                value:
+                  product:
+                    id: 632910392
+                    tags: "Barnes & Noble, John's Fav"
+                summary: "Update a product's tags"
+              example4:
+                value:
+                  product:
+                    id: 632910392
+                    images: []
+                summary: "Update a product by clearing product images"
+              example5:
+                value:
+                  product:
+                    id: 632910392
+                    images:
+                      - id: 850703190
+                      - id: 562641783
+                      - src: "http://example.com/rails_logo.gif"
+                summary: "Update a product by adding a new product image"
+              example6:
+                value:
+                  product:
+                    id: 632910392
+                    images:
+                      - id: 850703190
+                        position: 2
+                      - id: 562641783
+                        position: 1
+                summary: "Update a product by reordering product image"
+              example7:
+                value:
+                  product:
+                    id: 632910392
+                    variants:
+                      - id: 457924702
+                      - id: 39072856
+                      - id: 49148385
+                      - id: 808950810
+                summary: "Update a product by reordering the product variants"
+              example8:
+                value:
+                  product:
+                    id: 632910392
+                    title: "Updated Product Title"
+                    variants:
+                      - id: 808950810
+                        price: "2000.00"
+                        sku: "Updating the Product SKU"
+                      - id: 49148385
+                      - id: 39072856
+                      - id: 457924702
+                summary: "Update a product and one of its variants"
+              example9:
+                value:
+                  product:
+                    id: 632910392
+                    metafields_global_title_tag: "Brand new title"
+                    metafields_global_description_tag: "Brand new description"
+                summary: "Update a product's SEO title and description"
+              example10:
+                value:
+                  product:
+                    id: 632910392
+                    published: true
+                summary: "Show a hidden product by changing the published attribute to true"
+              example11:
+                value:
+                  product:
+                    id: 632910392
+                    published: false
+                summary: "Hide a published product by changing the published attribute to false"
+              example12:
+                value:
+                  product:
+                    id: 632910392
+                    metafields:
+                      - key: "new"
+                        value: "newvalue"
+                        value_type: "string"
+                        namespace: "global"
+                summary: "Add a metafield to an existing product"
+      summary: "Updates a product and its variants and images.\n          If you want to update the product's SEO information, then you can use the following properties:\n          \n            metafields_global_title_tag: The name of the product used for SEO purposes. Generally added to the <meta name='title'> tag.\n            metafields_global_description_tag: A description of the product used for SEO purposes. Generally added to the <meta name='description'> tag."
+      description: "https://shopify.dev/docs/admin-api/rest/reference/products/product#update-2020-04"
+      parameters:
+        - in: "path"
+          name: "product_id"
+          required: true
+          schema:
+            type: "string"
+          description: "product_id"
+      tags:
+        - "products"
+        - "product"
+        - "products/product"
+      responses:
+        200:
+          description: ""
+    delete:
+      summary: "Deletes a product."
+      description: "https://shopify.dev/docs/admin-api/rest/reference/products/product#destroy-2020-04"
+      parameters:
+        - in: "path"
+          name: "product_id"
+          required: true
+          schema:
+            type: "string"
+          description: "product_id"
+      tags:
+        - "products"
+        - "product"
+        - "products/product"
+      responses:
+        200:
+          description: ""
+  /admin/api/2020-07/products.json:
+    get:
+      summary: "Retrieves a list of products. Note: As of version 2019-07, this endpoint implements pagination by using links that are provided in the response header. Sending the page parameter will return an error. To learn more, see Making requests to paginated REST Admin API endpoints."
+      description: "https://shopify.dev/docs/admin-api/rest/reference/products/product#index-2020-07"
+      parameters:
+        - in: "query"
+          name: "ids"
+          description: "Return only products specified by a comma-separated list of product IDs."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "limit"
+          description: "Return up to this many results per page.\n                  (default: 50, maximum: 250)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "since_id"
+          description: "Restrict results to after the specified ID."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "title"
+          description: "Filter results by product title."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "vendor"
+          description: "Filter results by product vendor."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "handle"
+          description: "Filter results by product handle."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "product_type"
+          description: "Filter results by product type."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "status"
+          description: "Return products by their status.\n                  (default: active)\n                    \n                        active: Show only active products.\n                        archived: Show only archived products.\n                        draft: Show only draft products."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "collection_id"
+          description: "Filter results by product collection ID."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "created_at_min"
+          description: "Show products created after date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "created_at_max"
+          description: "Show products created before date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "updated_at_min"
+          description: "Show products last updated after date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "updated_at_max"
+          description: "Show products last updated before date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "published_at_min"
+          description: "Show products published after date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "published_at_max"
+          description: "Show products published before date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "published_status"
+          description: "Return products by their published status\n                  (default: any)\n                    \n                        published: Show only published products.\n                        unpublished: Show only unpublished products.\n                        any: Show all products."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "fields"
+          description: "Show only certain fields, specified by a comma-separated list of field names."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "presentment_currencies"
+          description: "Return presentment prices in only certain currencies, specified by a comma-separated list of ISO 4217 currency codes."
+          schema: {}
+          required: false
+      tags:
+        - "products"
+        - "product"
+        - "products/product"
+      responses:
+        200:
+          description: ""
+    post:
+      requestBody:
+        content:
+          application/json:
+            examples:
+              example1:
+                summary: "Create a new product with the default product variant"
+              example2:
+                value:
+                  product:
+                    title: "Burton Custom Freestyle 151"
+                    body_html: "<strong>Good snowboard!</strong>"
+                    vendor: "Burton"
+                    product_type: "Snowboard"
+                    published: false
+                summary: "Create a new unpublished product"
+              example3:
+                value:
+                  product:
+                    title: "Burton Custom Freestyle 151"
+                    body_html: "<strong>Good snowboard!</strong>"
+                    vendor: "Burton"
+                    product_type: "Snowboard"
+                    shop:
+                      id: 690933842
+                      name: "Apple Computers"
+                      email: "steve@apple.com"
+                      domain: "apple.myshopify.com"
+                      province: "California"
+                      country: "US"
+                      address1: "1 Infinite Loop"
+                      zip: "95014"
+                      city: "Cupertino"
+                      source: null
+                      phone: "1231231234"
+                      latitude: 45.45
+                      longitude: -75.43
+                      primary_locale: "en"
+                      address2: "Suite 100"
+                      created_at: "2007-12-31T19:00:00-05:00"
+                      updated_at: "2020-11-04T16:46:58-05:00"
+                      country_code: "US"
+                      country_name: "United States"
+                      currency: "USD"
+                      customer_email: "steve@apple.com"
+                      timezone: "(GMT-05:00) Eastern Time (US & Canada)"
+                      iana_timezone: "America/New_York"
+                      shop_owner: "Steve Jobs"
+                      money_format: "$"
+                      money_with_currency_format: "$ USD"
+                      weight_unit: "lb"
+                      province_code: "CA"
+                      taxes_included: null
+                      tax_shipping: null
+                      county_taxes: true
+                      plan_display_name: "Shopify Plus"
+                      plan_name: "enterprise"
+                      has_discounts: true
+                      has_gift_cards: true
+                      myshopify_domain: "apple.myshopify.com"
+                      google_apps_domain: null
+                      google_apps_login_enabled: null
+                      money_in_emails_format: "$"
+                      money_with_currency_in_emails_format: "$ USD"
+                      eligible_for_payments: true
+                      requires_extra_payments_agreement: false
+                      password_enabled: null
+                      has_storefront: true
+                      eligible_for_card_reader_giveaway: false
+                      finances: true
+                      primary_location_id: 905684977
+                      cookie_consent_level: "implicit"
+                      visitor_tracking_consent_preference: "allow_all"
+                      force_ssl: true
+                      checkout_api_supported: true
+                      multi_location_enabled: false
+                      setup_required: false
+                      pre_launch_enabled: false
+                      enabled_presentment_currencies:
+                        - "USD"
+                    status: "draft"
+                summary: "Create a new draft product"
+              example4:
+                value:
+                  product:
+                    title: "Burton Custom Freestyle 151"
+                    body_html: "<strong>Good snowboard!</strong>"
+                    vendor: "Burton"
+                    product_type: "Snowboard"
+                    variants:
+                      - option1: "First"
+                        price: "10.00"
+                        sku: "123"
+                      - option1: "Second"
+                        price: "20.00"
+                        sku: "123"
+                summary: "Create a new product with multiple product variants"
+              example5:
+                value:
+                  product:
+                    title: "Burton Custom Freestyle 151"
+                    body_html: "<strong>Good snowboard!</strong>"
+                    vendor: "Burton"
+                    product_type: "Snowboard"
+                    variants:
+                      - option1: "Blue"
+                        option2: "155"
+                      - option1: "Black"
+                        option2: "159"
+                    options:
+                      - name: "Color"
+                        values:
+                          - "Blue"
+                          - "Black"
+                      - name: "Size"
+                        values:
+                          - "155"
+                          - "159"
+                summary: "Create a new product with multiple product variants and multiple options"
+              example6:
+                value:
+                  product:
+                    title: "Burton Custom Freestyle 151"
+                    body_html: "<strong>Good snowboard!</strong>"
+                    vendor: "Burton"
+                    product_type: "Snowboard"
+                    images:
+                      - attachment: "R0lGODlhAQABAIAAAAAAAAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\n"
+                summary: "Create a new product with the default variant and base64 encoded image"
+              example7:
+                value:
+                  product:
+                    title: "Burton Custom Freestyle 151"
+                    body_html: "<strong>Good snowboard!</strong>"
+                    vendor: "Burton"
+                    product_type: "Snowboard"
+                    images:
+                      - src: "http://example.com/rails_logo.gif"
+                summary: "Create a new product with the default variant and a product image that will be downloaded by Shopify"
+              example8:
+                value:
+                  product:
+                    body_html: "A mystery!"
+                summary: "Creating a product without a title will return an error"
+              example9:
+                value:
+                  product:
+                    title: "Burton Custom Freestyle 151"
+                    body_html: "<strong>Good snowboard!</strong>"
+                    vendor: "Burton"
+                    product_type: "Snowboard"
+                    metafields:
+                      - key: "new"
+                        value: "newvalue"
+                        value_type: "string"
+                        namespace: "global"
+                summary: "Create a product with a metafield"
+      summary: "Creates a new product.\n          If you want to set the product's SEO information, then you can use the following properties:\n          \n            metafields_global_title_tag: The name of the product used for SEO purposes. Generally added to the <meta name='title'> tag.\n            metafields_global_description_tag: A description of the product used for SEO purposes. Generally added to the <meta name='description'> tag."
+      description: "https://shopify.dev/docs/admin-api/rest/reference/products/product#create-2020-07"
+      parameters: []
+      tags:
+        - "products"
+        - "product"
+        - "products/product"
+      responses:
+        200:
+          description: ""
+  /admin/api/2020-07/products/count.json:
+    get:
+      summary: "Retrieves a count of products."
+      description: "https://shopify.dev/docs/admin-api/rest/reference/products/product#count-2020-07"
+      parameters:
+        - in: "query"
+          name: "vendor"
+          description: "Filter results by product vendor."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "product_type"
+          description: "Filter results by product type."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "collection_id"
+          description: "Filter results by collection ID."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "created_at_min"
+          description: "Show products created after date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "created_at_max"
+          description: "Show products created before date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "updated_at_min"
+          description: "Show products last updated after date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "updated_at_max"
+          description: "Show products last updated before date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "published_at_min"
+          description: "Show products published after date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "published_at_max"
+          description: "Show products published before date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "published_status"
+          description: "Return products by their published status\n                  (default: any)\n                    \n                        published: Show only published products.\n                        unpublished: Show only unpublished products.\n                        any: Show all products."
+          schema: {}
+          required: false
+      tags:
+        - "products"
+        - "product"
+        - "products/product"
+      responses:
+        200:
+          description: ""
+  /admin/api/2020-07/products/{product_id}.json:
+    get:
+      summary: "Retrieves a single product."
+      description: "https://shopify.dev/docs/admin-api/rest/reference/products/product#show-2020-07"
+      parameters:
+        - in: "path"
+          name: "product_id"
+          required: true
+          schema:
+            type: "string"
+          description: "product_id"
+        - in: "query"
+          name: "fields"
+          description: "A comma-separated list of fields to include in the response."
+          schema: {}
+          required: false
+      tags:
+        - "products"
+        - "product"
+        - "products/product"
+      responses:
+        200:
+          description: ""
+    put:
+      requestBody:
+        content:
+          application/json:
+            examples:
+              example1:
+                value:
+                  product:
+                    id: 632910392
+                    title: "New product title"
+                summary: "Update a product's title"
+              example2:
+                value:
+                  product:
+                    id: 632910392
+                    status: "draft"
+                summary: "Update a product's status"
+              example3:
+                value:
+                  product:
+                    id: 632910392
+                    tags: "Barnes & Noble, John's Fav"
+                summary: "Update a product's tags"
+              example4:
+                value:
+                  product:
+                    id: 632910392
+                    images: []
+                summary: "Update a product by clearing product images"
+              example5:
+                value:
+                  product:
+                    id: 632910392
+                    images:
+                      - id: 850703190
+                      - id: 562641783
+                      - src: "http://example.com/rails_logo.gif"
+                summary: "Update a product by adding a new product image"
+              example6:
+                value:
+                  product:
+                    id: 632910392
+                    images:
+                      - id: 850703190
+                        position: 2
+                      - id: 562641783
+                        position: 1
+                summary: "Update a product by reordering product image"
+              example7:
+                value:
+                  product:
+                    id: 632910392
+                    variants:
+                      - id: 457924702
+                      - id: 39072856
+                      - id: 49148385
+                      - id: 808950810
+                summary: "Update a product by reordering the product variants"
+              example8:
+                value:
+                  product:
+                    id: 632910392
+                    title: "Updated Product Title"
+                    variants:
+                      - id: 808950810
+                        price: "2000.00"
+                        sku: "Updating the Product SKU"
+                      - id: 49148385
+                      - id: 39072856
+                      - id: 457924702
+                summary: "Update a product and one of its variants"
+              example9:
+                value:
+                  product:
+                    id: 632910392
+                    metafields_global_title_tag: "Brand new title"
+                    metafields_global_description_tag: "Brand new description"
+                summary: "Update a product's SEO title and description"
+              example10:
+                value:
+                  product:
+                    id: 632910392
+                    published: true
+                summary: "Show a hidden product by changing the published attribute to true"
+              example11:
+                value:
+                  product:
+                    id: 632910392
+                    published: false
+                summary: "Hide a published product by changing the published attribute to false"
+              example12:
+                value:
+                  product:
+                    id: 632910392
+                    metafields:
+                      - key: "new"
+                        value: "newvalue"
+                        value_type: "string"
+                        namespace: "global"
+                summary: "Add a metafield to an existing product"
+      summary: "Updates a product and its variants and images.\n          If you want to update the product's SEO information, then you can use the following properties:\n          \n            metafields_global_title_tag: The name of the product used for SEO purposes. Generally added to the <meta name='title'> tag.\n            metafields_global_description_tag: A description of the product used for SEO purposes. Generally added to the <meta name='description'> tag."
+      description: "https://shopify.dev/docs/admin-api/rest/reference/products/product#update-2020-07"
+      parameters:
+        - in: "path"
+          name: "product_id"
+          required: true
+          schema:
+            type: "string"
+          description: "product_id"
+      tags:
+        - "products"
+        - "product"
+        - "products/product"
+      responses:
+        200:
+          description: ""
+    delete:
+      summary: "Deletes a product."
+      description: "https://shopify.dev/docs/admin-api/rest/reference/products/product#destroy-2020-07"
+      parameters:
+        - in: "path"
+          name: "product_id"
+          required: true
+          schema:
+            type: "string"
+          description: "product_id"
+      tags:
+        - "products"
+        - "product"
+        - "products/product"
+      responses:
+        200:
+          description: ""
+  /admin/api/2020-10/products.json:
+    get:
+      summary: "Retrieves a list of products. Note: As of version 2019-07, this endpoint implements pagination by using links that are provided in the response header. Sending the page parameter will return an error. To learn more, see Making requests to paginated REST Admin API endpoints."
+      description: "https://shopify.dev/docs/admin-api/rest/reference/products/product#index-2020-10"
+      parameters:
+        - in: "query"
+          name: "ids"
+          description: "Return only products specified by a comma-separated list of product IDs."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "limit"
+          description: "Return up to this many results per page.\n                  (default: 50, maximum: 250)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "since_id"
+          description: "Restrict results to after the specified ID."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "title"
+          description: "Filter results by product title."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "vendor"
+          description: "Filter results by product vendor."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "handle"
+          description: "Filter results by product handle."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "product_type"
+          description: "Filter results by product type."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "status"
+          description: "Return products by their status.\n                  (default: active)\n                    \n                        active: Show only active products.\n                        archived: Show only archived products.\n                        draft: Show only draft products."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "collection_id"
+          description: "Filter results by product collection ID."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "created_at_min"
+          description: "Show products created after date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "created_at_max"
+          description: "Show products created before date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "updated_at_min"
+          description: "Show products last updated after date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "updated_at_max"
+          description: "Show products last updated before date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "published_at_min"
+          description: "Show products published after date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "published_at_max"
+          description: "Show products published before date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "published_status"
+          description: "Return products by their published status\n                  (default: any)\n                    \n                        published: Show only published products.\n                        unpublished: Show only unpublished products.\n                        any: Show all products."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "fields"
+          description: "Show only certain fields, specified by a comma-separated list of field names."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "presentment_currencies"
+          description: "Return presentment prices in only certain currencies, specified by a comma-separated list of ISO 4217 currency codes."
+          schema: {}
+          required: false
+      tags:
+        - "products"
+        - "product"
+        - "products/product"
+      responses:
+        200:
+          description: ""
+    post:
+      requestBody:
+        content:
+          application/json:
+            examples:
+              example1:
+                summary: "Create a new product with the default product variant"
+              example2:
+                value:
+                  product:
+                    title: "Burton Custom Freestyle 151"
+                    body_html: "<strong>Good snowboard!</strong>"
+                    vendor: "Burton"
+                    product_type: "Snowboard"
+                    published: false
+                summary: "Create a new unpublished product"
+              example3:
+                value:
+                  product:
+                    title: "Burton Custom Freestyle 151"
+                    body_html: "<strong>Good snowboard!</strong>"
+                    vendor: "Burton"
+                    product_type: "Snowboard"
+                    shop:
+                      id: 690933842
+                      name: "Apple Computers"
+                      email: "steve@apple.com"
+                      domain: "apple.myshopify.com"
+                      province: "California"
+                      country: "US"
+                      address1: "1 Infinite Loop"
+                      zip: "95014"
+                      city: "Cupertino"
+                      source: null
+                      phone: "1231231234"
+                      latitude: 45.45
+                      longitude: -75.43
+                      primary_locale: "en"
+                      address2: "Suite 100"
+                      created_at: "2007-12-31T19:00:00-05:00"
+                      updated_at: "2020-11-04T16:46:58-05:00"
+                      country_code: "US"
+                      country_name: "United States"
+                      currency: "USD"
+                      customer_email: "steve@apple.com"
+                      timezone: "(GMT-05:00) Eastern Time (US & Canada)"
+                      iana_timezone: "America/New_York"
+                      shop_owner: "Steve Jobs"
+                      money_format: "$"
+                      money_with_currency_format: "$ USD"
+                      weight_unit: "lb"
+                      province_code: "CA"
+                      taxes_included: null
+                      tax_shipping: null
+                      county_taxes: true
+                      plan_display_name: "Shopify Plus"
+                      plan_name: "enterprise"
+                      has_discounts: true
+                      has_gift_cards: true
+                      myshopify_domain: "apple.myshopify.com"
+                      google_apps_domain: null
+                      google_apps_login_enabled: null
+                      money_in_emails_format: "$"
+                      money_with_currency_in_emails_format: "$ USD"
+                      eligible_for_payments: true
+                      requires_extra_payments_agreement: false
+                      password_enabled: null
+                      has_storefront: true
+                      eligible_for_card_reader_giveaway: false
+                      finances: true
+                      primary_location_id: 905684977
+                      cookie_consent_level: "implicit"
+                      visitor_tracking_consent_preference: "allow_all"
+                      force_ssl: true
+                      checkout_api_supported: true
+                      multi_location_enabled: false
+                      setup_required: false
+                      pre_launch_enabled: false
+                      enabled_presentment_currencies:
+                        - "USD"
+                    status: "draft"
+                summary: "Create a new draft product"
+              example4:
+                value:
+                  product:
+                    title: "Burton Custom Freestyle 151"
+                    body_html: "<strong>Good snowboard!</strong>"
+                    vendor: "Burton"
+                    product_type: "Snowboard"
+                    variants:
+                      - option1: "First"
+                        price: "10.00"
+                        sku: "123"
+                      - option1: "Second"
+                        price: "20.00"
+                        sku: "123"
+                summary: "Create a new product with multiple product variants"
+              example5:
+                value:
+                  product:
+                    title: "Burton Custom Freestyle 151"
+                    body_html: "<strong>Good snowboard!</strong>"
+                    vendor: "Burton"
+                    product_type: "Snowboard"
+                    variants:
+                      - option1: "Blue"
+                        option2: "155"
+                      - option1: "Black"
+                        option2: "159"
+                    options:
+                      - name: "Color"
+                        values:
+                          - "Blue"
+                          - "Black"
+                      - name: "Size"
+                        values:
+                          - "155"
+                          - "159"
+                summary: "Create a new product with multiple product variants and multiple options"
+              example6:
+                value:
+                  product:
+                    title: "Burton Custom Freestyle 151"
+                    body_html: "<strong>Good snowboard!</strong>"
+                    vendor: "Burton"
+                    product_type: "Snowboard"
+                    images:
+                      - attachment: "R0lGODlhAQABAIAAAAAAAAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\n"
+                summary: "Create a new product with the default variant and base64 encoded image"
+              example7:
+                value:
+                  product:
+                    title: "Burton Custom Freestyle 151"
+                    body_html: "<strong>Good snowboard!</strong>"
+                    vendor: "Burton"
+                    product_type: "Snowboard"
+                    images:
+                      - src: "http://example.com/rails_logo.gif"
+                summary: "Create a new product with the default variant and a product image that will be downloaded by Shopify"
+              example8:
+                value:
+                  product:
+                    body_html: "A mystery!"
+                summary: "Creating a product without a title will return an error"
+              example9:
+                value:
+                  product:
+                    title: "Burton Custom Freestyle 151"
+                    body_html: "<strong>Good snowboard!</strong>"
+                    vendor: "Burton"
+                    product_type: "Snowboard"
+                    metafields:
+                      - key: "new"
+                        value: "newvalue"
+                        value_type: "string"
+                        namespace: "global"
+                summary: "Create a product with a metafield"
+      summary: "Creates a new product.\n          If you want to set the product's SEO information, then you can use the following properties:\n          \n            metafields_global_title_tag: The name of the product used for SEO purposes. Generally added to the <meta name='title'> tag.\n            metafields_global_description_tag: A description of the product used for SEO purposes. Generally added to the <meta name='description'> tag."
+      description: "https://shopify.dev/docs/admin-api/rest/reference/products/product#create-2020-10"
+      parameters: []
+      tags:
+        - "products"
+        - "product"
+        - "products/product"
+      responses:
+        200:
+          description: ""
+  /admin/api/2020-10/products/count.json:
+    get:
+      summary: "Retrieves a count of products."
+      description: "https://shopify.dev/docs/admin-api/rest/reference/products/product#count-2020-10"
+      parameters:
+        - in: "query"
+          name: "vendor"
+          description: "Filter results by product vendor."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "product_type"
+          description: "Filter results by product type."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "collection_id"
+          description: "Filter results by collection ID."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "created_at_min"
+          description: "Show products created after date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "created_at_max"
+          description: "Show products created before date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "updated_at_min"
+          description: "Show products last updated after date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "updated_at_max"
+          description: "Show products last updated before date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "published_at_min"
+          description: "Show products published after date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "published_at_max"
+          description: "Show products published before date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "published_status"
+          description: "Return products by their published status\n                  (default: any)\n                    \n                        published: Show only published products.\n                        unpublished: Show only unpublished products.\n                        any: Show all products."
+          schema: {}
+          required: false
+      tags:
+        - "products"
+        - "product"
+        - "products/product"
+      responses:
+        200:
+          description: ""
+  /admin/api/2020-10/products/{product_id}.json:
+    get:
+      summary: "Retrieves a single product."
+      description: "https://shopify.dev/docs/admin-api/rest/reference/products/product#show-2020-10"
+      parameters:
+        - in: "path"
+          name: "product_id"
+          required: true
+          schema:
+            type: "string"
+          description: "product_id"
+        - in: "query"
+          name: "fields"
+          description: "A comma-separated list of fields to include in the response."
+          schema: {}
+          required: false
+      tags:
+        - "products"
+        - "product"
+        - "products/product"
+      responses:
+        200:
+          description: ""
+    put:
+      requestBody:
+        content:
+          application/json:
+            examples:
+              example1:
+                value:
+                  product:
+                    id: 632910392
+                    title: "New product title"
+                summary: "Update a product's title"
+              example2:
+                value:
+                  product:
+                    id: 632910392
+                    status: "draft"
+                summary: "Update a product's status"
+              example3:
+                value:
+                  product:
+                    id: 632910392
+                    tags: "Barnes & Noble, John's Fav"
+                summary: "Update a product's tags"
+              example4:
+                value:
+                  product:
+                    id: 632910392
+                    images: []
+                summary: "Update a product by clearing product images"
+              example5:
+                value:
+                  product:
+                    id: 632910392
+                    images:
+                      - id: 850703190
+                      - id: 562641783
+                      - src: "http://example.com/rails_logo.gif"
+                summary: "Update a product by adding a new product image"
+              example6:
+                value:
+                  product:
+                    id: 632910392
+                    images:
+                      - id: 850703190
+                        position: 2
+                      - id: 562641783
+                        position: 1
+                summary: "Update a product by reordering product image"
+              example7:
+                value:
+                  product:
+                    id: 632910392
+                    variants:
+                      - id: 457924702
+                      - id: 39072856
+                      - id: 49148385
+                      - id: 808950810
+                summary: "Update a product by reordering the product variants"
+              example8:
+                value:
+                  product:
+                    id: 632910392
+                    title: "Updated Product Title"
+                    variants:
+                      - id: 808950810
+                        price: "2000.00"
+                        sku: "Updating the Product SKU"
+                      - id: 49148385
+                      - id: 39072856
+                      - id: 457924702
+                summary: "Update a product and one of its variants"
+              example9:
+                value:
+                  product:
+                    id: 632910392
+                    metafields_global_title_tag: "Brand new title"
+                    metafields_global_description_tag: "Brand new description"
+                summary: "Update a product's SEO title and description"
+              example10:
+                value:
+                  product:
+                    id: 632910392
+                    published: true
+                summary: "Show a hidden product by changing the published attribute to true"
+              example11:
+                value:
+                  product:
+                    id: 632910392
+                    published: false
+                summary: "Hide a published product by changing the published attribute to false"
+              example12:
+                value:
+                  product:
+                    id: 632910392
+                    metafields:
+                      - key: "new"
+                        value: "newvalue"
+                        value_type: "string"
+                        namespace: "global"
+                summary: "Add a metafield to an existing product"
+      summary: "Updates a product and its variants and images.\n          If you want to update the product's SEO information, then you can use the following properties:\n          \n            metafields_global_title_tag: The name of the product used for SEO purposes. Generally added to the <meta name='title'> tag.\n            metafields_global_description_tag: A description of the product used for SEO purposes. Generally added to the <meta name='description'> tag."
+      description: "https://shopify.dev/docs/admin-api/rest/reference/products/product#update-2020-10"
+      parameters:
+        - in: "path"
+          name: "product_id"
+          required: true
+          schema:
+            type: "string"
+          description: "product_id"
+      tags:
+        - "products"
+        - "product"
+        - "products/product"
+      responses:
+        200:
+          description: ""
+    delete:
+      summary: "Deletes a product."
+      description: "https://shopify.dev/docs/admin-api/rest/reference/products/product#destroy-2020-10"
+      parameters:
+        - in: "path"
+          name: "product_id"
+          required: true
+          schema:
+            type: "string"
+          description: "product_id"
+      tags:
+        - "products"
+        - "product"
+        - "products/product"
+      responses:
+        200:
+          description: ""
+  /admin/api/2021-01/products.json:
+    get:
+      summary: "Retrieves a list of products. Note: As of version 2019-07, this endpoint implements pagination by using links that are provided in the response header. Sending the page parameter will return an error. To learn more, see Making requests to paginated REST Admin API endpoints."
+      description: "https://shopify.dev/docs/admin-api/rest/reference/products/product#index-2021-01"
+      parameters:
+        - in: "query"
+          name: "ids"
+          description: "Return only products specified by a comma-separated list of product IDs."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "limit"
+          description: "Return up to this many results per page.\n                  (default: 50, maximum: 250)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "since_id"
+          description: "Restrict results to after the specified ID."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "title"
+          description: "Filter results by product title."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "vendor"
+          description: "Filter results by product vendor."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "handle"
+          description: "Filter results by product handle."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "product_type"
+          description: "Filter results by product type."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "status"
+          description: "Return products by their status.\n                  (default: active)\n                    \n                        active: Show only active products.\n                        archived: Show only archived products.\n                        draft: Show only draft products."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "collection_id"
+          description: "Filter results by product collection ID."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "created_at_min"
+          description: "Show products created after date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "created_at_max"
+          description: "Show products created before date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "updated_at_min"
+          description: "Show products last updated after date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "updated_at_max"
+          description: "Show products last updated before date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "published_at_min"
+          description: "Show products published after date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "published_at_max"
+          description: "Show products published before date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "published_status"
+          description: "Return products by their published status\n                  (default: any)\n                    \n                        published: Show only published products.\n                        unpublished: Show only unpublished products.\n                        any: Show all products."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "fields"
+          description: "Show only certain fields, specified by a comma-separated list of field names."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "presentment_currencies"
+          description: "Return presentment prices in only certain currencies, specified by a comma-separated list of ISO 4217 currency codes."
+          schema: {}
+          required: false
+      tags:
+        - "products"
+        - "product"
+        - "products/product"
+      responses:
+        200:
+          description: ""
+    post:
+      requestBody:
+        content:
+          application/json:
+            examples:
+              example1:
+                summary: "Create a new product with the default product variant"
+              example2:
+                value:
+                  product:
+                    title: "Burton Custom Freestyle 151"
+                    body_html: "<strong>Good snowboard!</strong>"
+                    vendor: "Burton"
+                    product_type: "Snowboard"
+                    published: false
+                summary: "Create a new unpublished product"
+              example3:
+                value:
+                  product:
+                    title: "Burton Custom Freestyle 151"
+                    body_html: "<strong>Good snowboard!</strong>"
+                    vendor: "Burton"
+                    product_type: "Snowboard"
+                    shop:
+                      id: 690933842
+                      name: "Apple Computers"
+                      email: "steve@apple.com"
+                      domain: "apple.myshopify.com"
+                      province: "California"
+                      country: "US"
+                      address1: "1 Infinite Loop"
+                      zip: "95014"
+                      city: "Cupertino"
+                      source: null
+                      phone: "1231231234"
+                      latitude: 45.45
+                      longitude: -75.43
+                      primary_locale: "en"
+                      address2: "Suite 100"
+                      created_at: "2007-12-31T19:00:00-05:00"
+                      updated_at: "2020-11-04T16:46:58-05:00"
+                      country_code: "US"
+                      country_name: "United States"
+                      currency: "USD"
+                      customer_email: "steve@apple.com"
+                      timezone: "(GMT-05:00) Eastern Time (US & Canada)"
+                      iana_timezone: "America/New_York"
+                      shop_owner: "Steve Jobs"
+                      money_format: "$"
+                      money_with_currency_format: "$ USD"
+                      weight_unit: "lb"
+                      province_code: "CA"
+                      taxes_included: null
+                      tax_shipping: null
+                      county_taxes: true
+                      plan_display_name: "Shopify Plus"
+                      plan_name: "enterprise"
+                      has_discounts: true
+                      has_gift_cards: true
+                      myshopify_domain: "apple.myshopify.com"
+                      google_apps_domain: null
+                      google_apps_login_enabled: null
+                      money_in_emails_format: "$"
+                      money_with_currency_in_emails_format: "$ USD"
+                      eligible_for_payments: true
+                      requires_extra_payments_agreement: false
+                      password_enabled: null
+                      has_storefront: true
+                      eligible_for_card_reader_giveaway: false
+                      finances: true
+                      primary_location_id: 905684977
+                      cookie_consent_level: "implicit"
+                      visitor_tracking_consent_preference: "allow_all"
+                      force_ssl: true
+                      checkout_api_supported: true
+                      multi_location_enabled: false
+                      setup_required: false
+                      pre_launch_enabled: false
+                      enabled_presentment_currencies:
+                        - "USD"
+                    status: "draft"
+                summary: "Create a new draft product"
+              example4:
+                value:
+                  product:
+                    title: "Burton Custom Freestyle 151"
+                    body_html: "<strong>Good snowboard!</strong>"
+                    vendor: "Burton"
+                    product_type: "Snowboard"
+                    variants:
+                      - option1: "First"
+                        price: "10.00"
+                        sku: "123"
+                      - option1: "Second"
+                        price: "20.00"
+                        sku: "123"
+                summary: "Create a new product with multiple product variants"
+              example5:
+                value:
+                  product:
+                    title: "Burton Custom Freestyle 151"
+                    body_html: "<strong>Good snowboard!</strong>"
+                    vendor: "Burton"
+                    product_type: "Snowboard"
+                    variants:
+                      - option1: "Blue"
+                        option2: "155"
+                      - option1: "Black"
+                        option2: "159"
+                    options:
+                      - name: "Color"
+                        values:
+                          - "Blue"
+                          - "Black"
+                      - name: "Size"
+                        values:
+                          - "155"
+                          - "159"
+                summary: "Create a new product with multiple product variants and multiple options"
+              example6:
+                value:
+                  product:
+                    title: "Burton Custom Freestyle 151"
+                    body_html: "<strong>Good snowboard!</strong>"
+                    vendor: "Burton"
+                    product_type: "Snowboard"
+                    images:
+                      - attachment: "R0lGODlhAQABAIAAAAAAAAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\n"
+                summary: "Create a new product with the default variant and base64 encoded image"
+              example7:
+                value:
+                  product:
+                    title: "Burton Custom Freestyle 151"
+                    body_html: "<strong>Good snowboard!</strong>"
+                    vendor: "Burton"
+                    product_type: "Snowboard"
+                    images:
+                      - src: "http://example.com/rails_logo.gif"
+                summary: "Create a new product with the default variant and a product image that will be downloaded by Shopify"
+              example8:
+                value:
+                  product:
+                    body_html: "A mystery!"
+                summary: "Creating a product without a title will return an error"
+              example9:
+                value:
+                  product:
+                    title: "Burton Custom Freestyle 151"
+                    body_html: "<strong>Good snowboard!</strong>"
+                    vendor: "Burton"
+                    product_type: "Snowboard"
+                    metafields:
+                      - key: "new"
+                        value: "newvalue"
+                        value_type: "string"
+                        namespace: "global"
+                summary: "Create a product with a metafield"
+      summary: "Creates a new product.\n          If you want to set the product's SEO information, then you can use the following properties:\n          \n            metafields_global_title_tag: The name of the product used for SEO purposes. Generally added to the <meta name='title'> tag.\n            metafields_global_description_tag: A description of the product used for SEO purposes. Generally added to the <meta name='description'> tag."
+      description: "https://shopify.dev/docs/admin-api/rest/reference/products/product#create-2021-01"
+      parameters: []
+      tags:
+        - "products"
+        - "product"
+        - "products/product"
+      responses:
+        200:
+          description: ""
+  /admin/api/2021-01/products/count.json:
+    get:
+      summary: "Retrieves a count of products."
+      description: "https://shopify.dev/docs/admin-api/rest/reference/products/product#count-2021-01"
+      parameters:
+        - in: "query"
+          name: "vendor"
+          description: "Filter results by product vendor."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "product_type"
+          description: "Filter results by product type."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "collection_id"
+          description: "Filter results by collection ID."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "created_at_min"
+          description: "Show products created after date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "created_at_max"
+          description: "Show products created before date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "updated_at_min"
+          description: "Show products last updated after date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "updated_at_max"
+          description: "Show products last updated before date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "published_at_min"
+          description: "Show products published after date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "published_at_max"
+          description: "Show products published before date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "published_status"
+          description: "Return products by their published status\n                  (default: any)\n                    \n                        published: Show only published products.\n                        unpublished: Show only unpublished products.\n                        any: Show all products."
+          schema: {}
+          required: false
+      tags:
+        - "products"
+        - "product"
+        - "products/product"
+      responses:
+        200:
+          description: ""
+  /admin/api/2021-01/products/{product_id}.json:
+    get:
+      summary: "Retrieves a single product."
+      description: "https://shopify.dev/docs/admin-api/rest/reference/products/product#show-2021-01"
+      parameters:
+        - in: "path"
+          name: "product_id"
+          required: true
+          schema:
+            type: "string"
+          description: "product_id"
+        - in: "query"
+          name: "fields"
+          description: "A comma-separated list of fields to include in the response."
+          schema: {}
+          required: false
+      tags:
+        - "products"
+        - "product"
+        - "products/product"
+      responses:
+        200:
+          description: ""
+    put:
+      requestBody:
+        content:
+          application/json:
+            examples:
+              example1:
+                value:
+                  product:
+                    id: 632910392
+                    title: "New product title"
+                summary: "Update a product's title"
+              example2:
+                value:
+                  product:
+                    id: 632910392
+                    status: "draft"
+                summary: "Update a product's status"
+              example3:
+                value:
+                  product:
+                    id: 632910392
+                    tags: "Barnes & Noble, John's Fav"
+                summary: "Update a product's tags"
+              example4:
+                value:
+                  product:
+                    id: 632910392
+                    images: []
+                summary: "Update a product by clearing product images"
+              example5:
+                value:
+                  product:
+                    id: 632910392
+                    images:
+                      - id: 850703190
+                      - id: 562641783
+                      - src: "http://example.com/rails_logo.gif"
+                summary: "Update a product by adding a new product image"
+              example6:
+                value:
+                  product:
+                    id: 632910392
+                    images:
+                      - id: 850703190
+                        position: 2
+                      - id: 562641783
+                        position: 1
+                summary: "Update a product by reordering product image"
+              example7:
+                value:
+                  product:
+                    id: 632910392
+                    variants:
+                      - id: 457924702
+                      - id: 39072856
+                      - id: 49148385
+                      - id: 808950810
+                summary: "Update a product by reordering the product variants"
+              example8:
+                value:
+                  product:
+                    id: 632910392
+                    title: "Updated Product Title"
+                    variants:
+                      - id: 808950810
+                        price: "2000.00"
+                        sku: "Updating the Product SKU"
+                      - id: 49148385
+                      - id: 39072856
+                      - id: 457924702
+                summary: "Update a product and one of its variants"
+              example9:
+                value:
+                  product:
+                    id: 632910392
+                    metafields_global_title_tag: "Brand new title"
+                    metafields_global_description_tag: "Brand new description"
+                summary: "Update a product's SEO title and description"
+              example10:
+                value:
+                  product:
+                    id: 632910392
+                    published: true
+                summary: "Show a hidden product by changing the published attribute to true"
+              example11:
+                value:
+                  product:
+                    id: 632910392
+                    published: false
+                summary: "Hide a published product by changing the published attribute to false"
+              example12:
+                value:
+                  product:
+                    id: 632910392
+                    metafields:
+                      - key: "new"
+                        value: "newvalue"
+                        value_type: "string"
+                        namespace: "global"
+                summary: "Add a metafield to an existing product"
+      summary: "Updates a product and its variants and images.\n          If you want to update the product's SEO information, then you can use the following properties:\n          \n            metafields_global_title_tag: The name of the product used for SEO purposes. Generally added to the <meta name='title'> tag.\n            metafields_global_description_tag: A description of the product used for SEO purposes. Generally added to the <meta name='description'> tag."
+      description: "https://shopify.dev/docs/admin-api/rest/reference/products/product#update-2021-01"
+      parameters:
+        - in: "path"
+          name: "product_id"
+          required: true
+          schema:
+            type: "string"
+          description: "product_id"
+      tags:
+        - "products"
+        - "product"
+        - "products/product"
+      responses:
+        200:
+          description: ""
+    delete:
+      summary: "Deletes a product."
+      description: "https://shopify.dev/docs/admin-api/rest/reference/products/product#destroy-2021-01"
+      parameters:
+        - in: "path"
+          name: "product_id"
+          required: true
+          schema:
+            type: "string"
+          description: "product_id"
+      tags:
+        - "products"
+        - "product"
+        - "products/product"
+      responses:
+        200:
+          description: ""
+  /admin/api/unstable/products.json:
+    get:
+      summary: "Retrieves a list of products. Note: As of version 2019-07, this endpoint implements pagination by using links that are provided in the response header. Sending the page parameter will return an error. To learn more, see Making requests to paginated REST Admin API endpoints."
+      description: "https://shopify.dev/docs/admin-api/rest/reference/products/product#index-unstable"
+      parameters:
+        - in: "query"
+          name: "ids"
+          description: "Return only products specified by a comma-separated list of product IDs."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "limit"
+          description: "Return up to this many results per page.\n                  (default: 50, maximum: 250)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "since_id"
+          description: "Restrict results to after the specified ID."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "title"
+          description: "Filter results by product title."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "vendor"
+          description: "Filter results by product vendor."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "handle"
+          description: "Filter results by product handle."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "product_type"
+          description: "Filter results by product type."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "status"
+          description: "Return products by their status.\n                  (default: active)\n                    \n                        active: Show only active products.\n                        archived: Show only archived products.\n                        draft: Show only draft products."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "collection_id"
+          description: "Filter results by product collection ID."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "created_at_min"
+          description: "Show products created after date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "created_at_max"
+          description: "Show products created before date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "updated_at_min"
+          description: "Show products last updated after date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "updated_at_max"
+          description: "Show products last updated before date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "published_at_min"
+          description: "Show products published after date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "published_at_max"
+          description: "Show products published before date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "published_status"
+          description: "Return products by their published status\n                  (default: any)\n                    \n                        published: Show only published products.\n                        unpublished: Show only unpublished products.\n                        any: Show all products."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "fields"
+          description: "Show only certain fields, specified by a comma-separated list of field names."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "presentment_currencies"
+          description: "Return presentment prices in only certain currencies, specified by a comma-separated list of ISO 4217 currency codes."
+          schema: {}
+          required: false
+      tags:
+        - "products"
+        - "product"
+        - "products/product"
+      responses:
+        200:
+          description: ""
+    post:
+      requestBody:
+        content:
+          application/json:
+            examples:
+              example1:
+                summary: "Create a new product with the default product variant"
+              example2:
+                value:
+                  product:
+                    title: "Burton Custom Freestyle 151"
+                    body_html: "<strong>Good snowboard!</strong>"
+                    vendor: "Burton"
+                    product_type: "Snowboard"
+                    published: false
+                summary: "Create a new unpublished product"
+              example3:
+                value:
+                  product:
+                    title: "Burton Custom Freestyle 151"
+                    body_html: "<strong>Good snowboard!</strong>"
+                    vendor: "Burton"
+                    product_type: "Snowboard"
+                    shop:
+                      id: 690933842
+                      name: "Apple Computers"
+                      email: "steve@apple.com"
+                      domain: "apple.myshopify.com"
+                      province: "California"
+                      country: "US"
+                      address1: "1 Infinite Loop"
+                      zip: "95014"
+                      city: "Cupertino"
+                      source: null
+                      phone: "1231231234"
+                      latitude: 45.45
+                      longitude: -75.43
+                      primary_locale: "en"
+                      address2: "Suite 100"
+                      created_at: "2007-12-31T19:00:00-05:00"
+                      updated_at: "2020-11-04T16:46:58-05:00"
+                      country_code: "US"
+                      country_name: "United States"
+                      currency: "USD"
+                      customer_email: "steve@apple.com"
+                      timezone: "(GMT-05:00) Eastern Time (US & Canada)"
+                      iana_timezone: "America/New_York"
+                      shop_owner: "Steve Jobs"
+                      money_format: "$"
+                      money_with_currency_format: "$ USD"
+                      weight_unit: "lb"
+                      province_code: "CA"
+                      taxes_included: null
+                      tax_shipping: null
+                      county_taxes: true
+                      plan_display_name: "Shopify Plus"
+                      plan_name: "enterprise"
+                      has_discounts: true
+                      has_gift_cards: true
+                      myshopify_domain: "apple.myshopify.com"
+                      google_apps_domain: null
+                      google_apps_login_enabled: null
+                      money_in_emails_format: "$"
+                      money_with_currency_in_emails_format: "$ USD"
+                      eligible_for_payments: true
+                      requires_extra_payments_agreement: false
+                      password_enabled: null
+                      has_storefront: true
+                      eligible_for_card_reader_giveaway: false
+                      finances: true
+                      primary_location_id: 905684977
+                      cookie_consent_level: "implicit"
+                      visitor_tracking_consent_preference: "allow_all"
+                      force_ssl: true
+                      checkout_api_supported: true
+                      multi_location_enabled: false
+                      setup_required: false
+                      pre_launch_enabled: false
+                      enabled_presentment_currencies:
+                        - "USD"
+                    status: "draft"
+                summary: "Create a new draft product"
+              example4:
+                value:
+                  product:
+                    title: "Burton Custom Freestyle 151"
+                    body_html: "<strong>Good snowboard!</strong>"
+                    vendor: "Burton"
+                    product_type: "Snowboard"
+                    variants:
+                      - option1: "First"
+                        price: "10.00"
+                        sku: "123"
+                      - option1: "Second"
+                        price: "20.00"
+                        sku: "123"
+                summary: "Create a new product with multiple product variants"
+              example5:
+                value:
+                  product:
+                    title: "Burton Custom Freestyle 151"
+                    body_html: "<strong>Good snowboard!</strong>"
+                    vendor: "Burton"
+                    product_type: "Snowboard"
+                    variants:
+                      - option1: "Blue"
+                        option2: "155"
+                      - option1: "Black"
+                        option2: "159"
+                    options:
+                      - name: "Color"
+                        values:
+                          - "Blue"
+                          - "Black"
+                      - name: "Size"
+                        values:
+                          - "155"
+                          - "159"
+                summary: "Create a new product with multiple product variants and multiple options"
+              example6:
+                value:
+                  product:
+                    title: "Burton Custom Freestyle 151"
+                    body_html: "<strong>Good snowboard!</strong>"
+                    vendor: "Burton"
+                    product_type: "Snowboard"
+                    images:
+                      - attachment: "R0lGODlhAQABAIAAAAAAAAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\n"
+                summary: "Create a new product with the default variant and base64 encoded image"
+              example7:
+                value:
+                  product:
+                    title: "Burton Custom Freestyle 151"
+                    body_html: "<strong>Good snowboard!</strong>"
+                    vendor: "Burton"
+                    product_type: "Snowboard"
+                    images:
+                      - src: "http://example.com/rails_logo.gif"
+                summary: "Create a new product with the default variant and a product image that will be downloaded by Shopify"
+              example8:
+                value:
+                  product:
+                    body_html: "A mystery!"
+                summary: "Creating a product without a title will return an error"
+              example9:
+                value:
+                  product:
+                    title: "Burton Custom Freestyle 151"
+                    body_html: "<strong>Good snowboard!</strong>"
+                    vendor: "Burton"
+                    product_type: "Snowboard"
+                    metafields:
+                      - key: "new"
+                        value: "newvalue"
+                        value_type: "string"
+                        namespace: "global"
+                summary: "Create a product with a metafield"
+      summary: "Creates a new product.\n          If you want to set the product's SEO information, then you can use the following properties:\n          \n            metafields_global_title_tag: The name of the product used for SEO purposes. Generally added to the <meta name='title'> tag.\n            metafields_global_description_tag: A description of the product used for SEO purposes. Generally added to the <meta name='description'> tag."
+      description: "https://shopify.dev/docs/admin-api/rest/reference/products/product#create-unstable"
+      parameters: []
+      tags:
+        - "products"
+        - "product"
+        - "products/product"
+      responses:
+        200:
+          description: ""
+  /admin/api/unstable/products/count.json:
+    get:
+      summary: "Retrieves a count of products."
+      description: "https://shopify.dev/docs/admin-api/rest/reference/products/product#count-unstable"
+      parameters:
+        - in: "query"
+          name: "vendor"
+          description: "Filter results by product vendor."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "product_type"
+          description: "Filter results by product type."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "collection_id"
+          description: "Filter results by collection ID."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "created_at_min"
+          description: "Show products created after date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "created_at_max"
+          description: "Show products created before date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "updated_at_min"
+          description: "Show products last updated after date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "updated_at_max"
+          description: "Show products last updated before date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "published_at_min"
+          description: "Show products published after date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "published_at_max"
+          description: "Show products published before date. (format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "published_status"
+          description: "Return products by their published status\n                  (default: any)\n                    \n                        published: Show only published products.\n                        unpublished: Show only unpublished products.\n                        any: Show all products."
+          schema: {}
+          required: false
+      tags:
+        - "products"
+        - "product"
+        - "products/product"
+      responses:
+        200:
+          description: ""
+  /admin/api/unstable/products/{product_id}.json:
+    get:
+      summary: "Retrieves a single product."
+      description: "https://shopify.dev/docs/admin-api/rest/reference/products/product#show-unstable"
+      parameters:
+        - in: "path"
+          name: "product_id"
+          required: true
+          schema:
+            type: "string"
+          description: "product_id"
+        - in: "query"
+          name: "fields"
+          description: "A comma-separated list of fields to include in the response."
+          schema: {}
+          required: false
+      tags:
+        - "products"
+        - "product"
+        - "products/product"
+      responses:
+        200:
+          description: ""
+    put:
+      requestBody:
+        content:
+          application/json:
+            examples:
+              example1:
+                value:
+                  product:
+                    id: 632910392
+                    title: "New product title"
+                summary: "Update a product's title"
+              example2:
+                value:
+                  product:
+                    id: 632910392
+                    status: "draft"
+                summary: "Update a product's status"
+              example3:
+                value:
+                  product:
+                    id: 632910392
+                    tags: "Barnes & Noble, John's Fav"
+                summary: "Update a product's tags"
+              example4:
+                value:
+                  product:
+                    id: 632910392
+                    images: []
+                summary: "Update a product by clearing product images"
+              example5:
+                value:
+                  product:
+                    id: 632910392
+                    images:
+                      - id: 850703190
+                      - id: 562641783
+                      - src: "http://example.com/rails_logo.gif"
+                summary: "Update a product by adding a new product image"
+              example6:
+                value:
+                  product:
+                    id: 632910392
+                    images:
+                      - id: 850703190
+                        position: 2
+                      - id: 562641783
+                        position: 1
+                summary: "Update a product by reordering product image"
+              example7:
+                value:
+                  product:
+                    id: 632910392
+                    variants:
+                      - id: 457924702
+                      - id: 39072856
+                      - id: 49148385
+                      - id: 808950810
+                summary: "Update a product by reordering the product variants"
+              example8:
+                value:
+                  product:
+                    id: 632910392
+                    title: "Updated Product Title"
+                    variants:
+                      - id: 808950810
+                        price: "2000.00"
+                        sku: "Updating the Product SKU"
+                      - id: 49148385
+                      - id: 39072856
+                      - id: 457924702
+                summary: "Update a product and one of its variants"
+              example9:
+                value:
+                  product:
+                    id: 632910392
+                    metafields_global_title_tag: "Brand new title"
+                    metafields_global_description_tag: "Brand new description"
+                summary: "Update a product's SEO title and description"
+              example10:
+                value:
+                  product:
+                    id: 632910392
+                    published: true
+                summary: "Show a hidden product by changing the published attribute to true"
+              example11:
+                value:
+                  product:
+                    id: 632910392
+                    published: false
+                summary: "Hide a published product by changing the published attribute to false"
+              example12:
+                value:
+                  product:
+                    id: 632910392
+                    metafields:
+                      - key: "new"
+                        value: "newvalue"
+                        value_type: "string"
+                        namespace: "global"
+                summary: "Add a metafield to an existing product"
+      summary: "Updates a product and its variants and images.\n          If you want to update the product's SEO information, then you can use the following properties:\n          \n            metafields_global_title_tag: The name of the product used for SEO purposes. Generally added to the <meta name='title'> tag.\n            metafields_global_description_tag: A description of the product used for SEO purposes. Generally added to the <meta name='description'> tag."
+      description: "https://shopify.dev/docs/admin-api/rest/reference/products/product#update-unstable"
+      parameters:
+        - in: "path"
+          name: "product_id"
+          required: true
+          schema:
+            type: "string"
+          description: "product_id"
+      tags:
+        - "products"
+        - "product"
+        - "products/product"
+      responses:
+        200:
+          description: ""
+    delete:
+      summary: "Deletes a product."
+      description: "https://shopify.dev/docs/admin-api/rest/reference/products/product#destroy-unstable"
+      parameters:
+        - in: "path"
+          name: "product_id"
+          required: true
+          schema:
+            type: "string"
+          description: "product_id"
+      tags:
+        - "products"
+        - "product"
+        - "products/product"
+      responses:
+        200:
+          description: ""
