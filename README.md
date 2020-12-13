@@ -1,4 +1,30 @@
 
+## Usage
+
+### TypeScript
+
+```javascript
+const OpenAPIClientAxios = require('openapi-client-axios').default
+
+const definition = 'https://raw.githubusercontent.com/allengrant/shopify_openapi/master/shopify_openapi.yaml'
+let api = new OpenAPIClientAxios({ definition })
+api = await api.init()
+```
+
+### Python
+
+```bash
+# Generate the Python Client
+openapi-python-client generate --url https://raw.githubusercontent.com/allengrant/shopify_openapi/master/shopify_openapi.yaml
+cd shopify-admin-api-client
+```
+
+```python
+from shopify_admin_api_client import Client
+
+client = Client(base_url="https://example.myshopify.com")
+```
+
 ## Contributing
 
 [fork]: https://github.com/USER/REPO/fork
